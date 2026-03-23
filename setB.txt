@@ -1,0 +1,280 @@
+Daikon version 5.8.22, released June 3, 2025; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+===========================================================================
+example:::OBJECT
+this == this
+this.count == this.count
+0 <= this.count <= 63
+this.count <= 11
+this.count >= 0
+this.count >= 0
+this.count - this.count == 0
+===========================================================================
+example.add(int):::ENTER
+this == this
+this.count == this.count
+x == x
+this.count one of { 0, 2, 5 }
+0 <= this.count <= 63
+this.count <= 5
+this.count >= 0
+this.count >= 0
+x one of { 3, 5, 10 }
+0 <= x <= 63
+x != 0
+x <= 10
+x >= 0
+x >= 3
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * this.count+ 0 * this.count + 0 == 0
+this.count <= x
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * this.count+ 0 * x + 0 == 0
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * x+ 0 * x + 0 == 0
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (this.count, this.count, x)
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (this.count, x, x)
+===========================================================================
+example.add(int):::EXIT
+this == orig(this)
+this.count == this.count
+x == orig(x)
+orig(this) == orig(this)
+orig(this.count) == orig(this.count)
+orig(x) == orig(x)
+this.count one of { 5, 10 }
+0 <= this.count <= 63
+this.count != 0
+this.count <= 10
+this.count >= 0
+this.count >= 5
+orig(this.count) one of { 0, 2, 5 }
+0 <= orig(this.count) <= 63
+orig(this.count) <= 5
+orig(this.count) >= 0
+orig(this.count) >= 0
+orig(x) one of { 3, 5, 10 }
+0 <= orig(x) <= 63
+orig(x) != 0
+orig(x) <= 10
+orig(x) >= 0
+orig(x) >= 3
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * this.count+ 0 * this.count + 0 == 0
+this.count > orig(this.count)
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * this.count+ 0 * orig(this.count) + 0 == 0
+this.count >= orig(x)
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * this.count+ 0 * orig(x) + 0 == 0
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * orig(this.count)+ 0 * orig(this.count) + 0 == 0
+orig(this.count) <= orig(x)
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * orig(this.count)+ 0 * orig(x) + 0 == 0
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * orig(x)+ 0 * orig(x) + 0 == 0
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (this.count, this.count, orig(this.count))
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (this.count, this.count, orig(x))
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (this.count, orig(this.count), orig(this.count))
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (this.count, orig(this.count), orig(x))
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (this.count, orig(x), orig(x))
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (orig(this.count), orig(this.count), orig(x))
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (orig(this.count), orig(x), orig(x))
+===========================================================================
+example.example():::EXIT
+this == this
+this.count == this.count
+this.count == 0
+0 <= this.count <= 63
+this.count <= 0
+this.count == 0
+this.count >= 0
+this.count >= 0
+this.count is boolean
+this.count == this.count**2
+this.count == this.count**2
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * this.count+ 0 * this.count + 0 == 0
+===========================================================================
+example.getCount():::ENTER
+this == this
+this.count == this.count
+this.count one of { 10, 11 }
+0 <= this.count <= 63
+this.count != 0
+this.count <= 11
+this.count >= 0
+this.count >= 10
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * this.count+ 0 * this.count + 0 == 0
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (this.count, this.count, this.count)
+===========================================================================
+example.getCount():::EXIT
+this == orig(this)
+this.count == return
+return == return
+return == orig(this.count)
+orig(this) == orig(this)
+return one of { 10, 11 }
+0 <= return <= 63
+return != 0
+return <= 11
+return >= 0
+return >= 10
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * return+ 0 * return + 0 == 0
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (return, return, return)
+===========================================================================
+example.inc():::ENTER
+this == this
+this.count == this.count
+this.count one of { 0, 1, 10 }
+0 <= this.count <= 63
+this.count <= 10
+this.count >= 0
+this.count >= 0
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * this.count+ 0 * this.count + 0 == 0
+===========================================================================
+example.inc():::EXIT
+this == orig(this)
+this.count == this.count
+orig(this) == orig(this)
+orig(this.count) == orig(this.count)
+this.count one of { 1, 2, 11 }
+0 <= this.count <= 63
+this.count != 0
+this.count <= 11
+this.count >= 0
+this.count >= 1
+orig(this.count) one of { 0, 1, 10 }
+0 <= orig(this.count) <= 63
+orig(this.count) <= 10
+orig(this.count) >= 0
+orig(this.count) >= 0
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * this.count+ 0 * this.count + 0 == 0
+this.count > orig(this.count)
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * this.count+ 0 * orig(this.count) + 0 == 0
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * orig(this.count)+ 0 * orig(this.count) + 0 == 0
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (this.count, this.count, orig(this.count))
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (this.count, orig(this.count), orig(this.count))
+===========================================================================
+example.isNonNegative():::ENTER
+this == this
+this.count == this.count
+this.count one of { 10, 11 }
+0 <= this.count <= 63
+this.count != 0
+this.count <= 11
+this.count >= 0
+this.count >= 10
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * this.count+ 0 * this.count + 0 == 0
+===========================================================================
+example.isNonNegative():::EXIT
+this == orig(this)
+this.count == this.count
+this.count == orig(this.count)
+return == return
+orig(this) == orig(this)
+this.count one of { 10, 11 }
+0 <= this.count <= 63
+this.count != 0
+this.count <= 11
+this.count >= 0
+this.count >= 10
+return == true
+return != 0
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * this.count+ 0 * this.count + 0 == 0
+===========================================================================
+example.isNonNegative():::EXIT;condition="return == true"
+this == orig(this)
+this.count == this.count
+this.count == orig(this.count)
+return == return
+orig(this) == orig(this)
+this.count one of { 10, 11 }
+0 <= this.count <= 63
+this.count != 0
+this.count <= 11
+this.count >= 0
+this.count >= 10
+return == true
+return != 0
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * this.count+ 0 * this.count + 0 == 0
+===========================================================================
+exampleTest.main(java.lang.String[]):::ENTER
+args == args
+args.getClass().getName() == args.getClass().getName()
+args[] == args[]
+args[].toString == args[].toString
+size(args[]) == size(args[])
+size(args[])-1 == size(args[])-1
+args has only one value
+args != null
+args.getClass().getName() == java.lang.String[].class
+args[] == []
+args[] elements one of {  }
+args[] elements != null
+args[] elements are equal
+args[].toString == []
+args[].toString elements one of {  }
+size(args[]) == 0
+0 <= size(args[]) <= 63
+size(args[]) <= 0
+size(args[]) == 0
+size(args[]) >= 0
+size(args[]) >= 0
+size(args[]) is boolean
+size(args[])-1 == -1
+size(args[])-1 != 0
+size(args[])-1 <= -1
+size(args[])-1 == -1
+size(args[])-1 >= -1
+args[] is the reverse of args[]
+warning: too few samples for daikon.inv.binary.twoSequence.PairwiseLinearBinary invariant: (args[], args[])
+args[].toString <= args[].toString (lexically)
+args[].toString >= args[].toString (lexically)
+size(args[]) == size(args[])**2
+size(args[]) == size(args[])**2
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * size(args[])+ 0 * size(args[]) + 0 == 0
+size(args[]) > size(args[])-1
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * size(args[])+ 0 * size(args[])-1 + 0 == 0
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * size(args[])-1+ 0 * size(args[])-1 + 0 == 0
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (size(args[]), size(args[]), size(args[])-1)
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (size(args[]), size(args[])-1, size(args[])-1)
+===========================================================================
+exampleTest.main(java.lang.String[]):::EXIT
+args == orig(args)
+args.getClass().getName() == orig(args.getClass().getName())
+args[] == args[]
+args[] == orig(args[])
+args[].toString == args[].toString
+orig(args) == orig(args)
+orig(args.getClass().getName()) == orig(args.getClass().getName())
+size(args[]) == orig(size(args[]))
+size(args[])-1 == size(args[])-1
+size(args[])-1 == orig(size(args[]))-1
+orig(size(args[])) == orig(size(args[]))
+args[] == []
+args[] elements one of {  }
+args[] elements != null
+args[] elements are equal
+args[].toString == []
+args[].toString elements one of {  }
+orig(args) has only one value
+orig(args) != null
+orig(args.getClass().getName()) == java.lang.String[].class
+size(args[])-1 == -1
+size(args[])-1 != 0
+size(args[])-1 <= -1
+size(args[])-1 == -1
+size(args[])-1 >= -1
+orig(size(args[])) == 0
+0 <= orig(size(args[])) <= 63
+orig(size(args[])) <= 0
+orig(size(args[])) == 0
+orig(size(args[])) >= 0
+orig(size(args[])) >= 0
+orig(size(args[])) is boolean
+args[] is the reverse of args[]
+warning: too few samples for daikon.inv.binary.twoSequence.PairwiseLinearBinary invariant: (args[], args[])
+args[].toString <= args[].toString (lexically)
+args[].toString >= args[].toString (lexically)
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * size(args[])-1+ 0 * size(args[])-1 + 0 == 0
+size(args[])-1 < orig(size(args[]))
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * size(args[])-1+ 0 * orig(size(args[])) + 0 == 0
+orig(size(args[])) == orig(size(args[]))**2
+orig(size(args[])) == orig(size(args[]))**2
+warning: too few samples for daikon.inv.binary.twoScalar.LinearBinary invariant: 0 * orig(size(args[]))+ 0 * orig(size(args[])) + 0 == 0
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (size(args[])-1, size(args[])-1, orig(size(args[])))
+warning: too few samples for daikon.inv.ternary.threeScalar.LinearTernary invariant: (size(args[])-1, orig(size(args[])), orig(size(args[])))
+Exiting Daikon.

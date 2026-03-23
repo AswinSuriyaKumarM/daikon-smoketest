@@ -1,0 +1,52 @@
+Daikon version 5.8.22, released June 3, 2025; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+===========================================================================
+example:::OBJECT
+this.count >= 0
+===========================================================================
+example.add(int):::ENTER
+this.count one of { 0, 2, 5 }
+x one of { 3, 5, 10 }
+===========================================================================
+example.add(int):::EXIT
+this.count one of { 5, 10 }
+===========================================================================
+example.example():::EXIT
+this.count == 0
+===========================================================================
+example.getCount():::ENTER
+this.count one of { 10, 11 }
+===========================================================================
+example.getCount():::EXIT
+this.count == return
+return == orig(this.count)
+return one of { 10, 11 }
+===========================================================================
+example.inc():::ENTER
+this.count one of { 0, 1, 10 }
+===========================================================================
+example.inc():::EXIT
+this.count one of { 1, 2, 11 }
+===========================================================================
+example.isNonNegative():::ENTER
+this.count one of { 10, 11 }
+===========================================================================
+example.isNonNegative():::EXIT
+this.count == orig(this.count)
+this.count one of { 10, 11 }
+return == true
+===========================================================================
+example.isNonNegative():::EXIT;condition="return == true"
+===========================================================================
+exampleTest.main(java.lang.String[]):::ENTER
+args has only one value
+args.getClass().getName() == java.lang.String[].class
+args[] == []
+args[].toString == []
+===========================================================================
+exampleTest.main(java.lang.String[]):::EXIT
+args[] == orig(args[])
+args[] == []
+args[].toString == []
+Exiting Daikon.
