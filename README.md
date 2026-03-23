@@ -61,25 +61,10 @@ diff -u setA.txt setB.txt > diff.txt
 
 From the comparison (`diff.txt`), the following invariants capture meaningful program behavior:
 
-#### Behavioral invariants
-
 this.count > orig(this.count)
 
-#### Functional invariants
-
 this.count == return
+
 return == orig(this.count)
 
-#### Frame invariants
-
 this.count == orig(this.count)
-
-### Interpretation
-
-* **Behavioral** → shows how the program state changes
-* **Functional** → shows relation between return value and state
-* **Frame** → shows variables that remain unchanged
-
-### Conclusion
-
-> These invariants represent the most useful information extracted by Daikon, capturing state changes, method behavior, and input–output relationships.
