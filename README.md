@@ -39,7 +39,7 @@ Output: exampleTest.dtrace.gz
 
 java -cp "$DAIKONDIR/daikon.jar" daikon.Daikon exampleTest.dtrace.gz > setA.txt
 
-### 7. Run Daikon (filters disabled)
+### 7. Run Daikon (filters disabled) 
 
 java -cp "$DAIKONDIR/daikon.jar" daikon.Daikon \
   --config_option daikon.inv.filter.DerivedParameterFilter.enabled=false \
@@ -57,14 +57,27 @@ java -cp "$DAIKONDIR/daikon.jar" daikon.Daikon \
 
 diff -u setA.txt setB.txt > diff.txt
 
-### 9. Identify useful invariants [ChatGPT]
+### 9. Generate tests using EvoSuite**
 
-From the comparison (`diff.txt`), the following invariants capture meaningful program behavior:
+/usr/lib/jvm/java-8-openjdk-amd64/bin/java \
+-jar evosuite-1.2.0.jar \
+-class example \
+-projectCP . \
+-Dsearch_budget=5
 
-this.count > orig(this.count)
+Output: evosuite-tests/example_ESTest.java
 
-this.count == return
 
-return == orig(this.count)
+### 10 Create test runner (required for Daikon)**
 
-this.count == orig(this.count)
+Create `RunTests.java`:
+
+import org.junit.runner.JUnitCore;
+
+public class RunTests {
+    public static void main(String[] args) {
+        JUnitCore.runClasses(example_ESTest.class);
+    }
+}
+
+### 11. Repeat step 1-8
